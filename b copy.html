@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GoldFest 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <style>
+    /* Reset ve temel ayarlar */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #fff;
+      color: #222;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav {
+      background: #111;
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    nav a.logo {
+      color: #bb8c00;
+      font-weight: 700;
+      font-size: 1.75rem;
+      text-decoration: none;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+    nav ul li a {
+      color: #bb8c00;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+      background-color: #ffcc00;
+      color: #111;
+      outline: none;
+    }
+
+    .intro-section {
+      padding: 60px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .intro-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .intro-text {
+      flex: 1 1 450px;
+    }
+
+    .intro-text h1 {
+      font-size: 2.8rem;
+      color: #bb8c00;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .intro-text h2 {
+      text-align: left;
+      color: #000;
+      line-height: 1.6;
+    }
+
+    .intro-image {
+      flex: 1 1 450px;
+      text-align: center;
+      border-radius: 20px;
+    }
+
+    .intro-image img {
+      max-width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .about img {
+      margin: 50px;
+      padding: 45px;
+      width: 1000px;
+      border: 2px solid pink;
+    }
+
+    .about h2 {
+      color: #bb8c00;
+    }
+
+    .about h1 {
+      color: #bb8c00;
+      text-align: center;
+    }
+
+    /* Dark mode için uyum */
+    .dark-mode .intro-text h1 {
+      color: #ffdb4d;
+    }
+    .dark-mode .intro-text p {
+      color: #ccc;
+    }
+    .dark-mode .intro-image img {
+      box-shadow: 0 4px 24px rgba(255, 204, 0, 0.4);
+    }
+ 
+
+    #countdown {
+      margin-top: 24px;
+      font-weight: 700;
+      font-size: 1.4rem;
+      background-color: #deb30a;
+      color: #111;
+      padding: 14px 30px;
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 0 0 12px #deb30aaa;
+      user-select: text;
+    }
+
+    /* Bölümler */
+    section {
+      max-width: 1100px;
+      margin: 90px auto;
+      padding: 0 24px;
+    }
+    h2 {
+      font-size: 2.7rem;
+      text-align: center;
+      margin-bottom: 48px;
+      color: #222;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      user-select: none;
+    }
+    h1.nedenmi {
+      color: #bb8c00;
+      font-size: 2.3rem;
+      max-width: 700px;
+      margin: 40px auto 0;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+    p.nedenmi-text {
+      max-width: 720px;
+      margin: 20px auto 60px;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      user-select: text;
+      color: #333;
+    }
+
+    /* Bilgi Kutuları */
+    .info-box {
+      background-color: #fffbe6;
+      border-left: 6px solid gold;
+      padding: 26px 28px;
+      border-radius: 14px;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 16px rgb(218 185 12 / 0.3);
+      user-select: text;
+      margin-bottom: 30px;
+    }
+    .info-box p strong {
+      color: #bb8c00;
+    }
+
+    /* Program ve Firmalar Grid */
+    .schedule,
+    .artists,
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      user-select: none;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 18px;
+      padding: 24px 20px;
+      box-shadow: 0 6px 24px rgb(0 0 0 / 0.1);
+      text-align: center;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+      user-select: none;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgb(255 204 0 / 0.6);
+    }
+    .card h3 {
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #bb8c00;
+      letter-spacing: 0.05em;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.5;
+    }
+
+        @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .intro-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .intro-text h1 {
+        font-size: 2rem;
+      }
+
+      .intro-text h2 {
+        font-size: 1rem;
+      }
+
+      .about img {
+        width: 100%;
+        padding: 12px;
+        margin: 20px auto;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      h1.nedenmi {
+        font-size: 1.6rem;
+        padding: 0 12px;
+      }
+
+      p.nedenmi-text {
+        font-size: 0.95rem;
+        padding: 0 12px;
+      }
+
+      .card {
+        padding: 16px 12px;
+      }
+
+      .gallery img {
+        border-radius: 12px;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .social-links div {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .social-links a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 18px;
+      }
+
+      .social-links a i {
+        font-size: 24px;
+        margin-bottom: 6px;
+      }
+
+      iframe {
+        height: 250px;
+      }
+
+      .contact-form {
+        padding: 0 12px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        font-size: 0.95rem;
+        width: 100%;
+      }
+
+      .contact-form button {
+        font-size: 1rem;
+        padding: 14px 0;
+      }
+
+      footer {
+        font-size: 0.85rem;
+        padding: 16px 12px;
+      }
+
+      button[onclick="toggleDarkMode()"] {
+        bottom: 80px;
+        right: 16px;
+        padding: 12px 14px;
+        font-size: 20px;
+      }
+    }
+
+
+    /* Galeri img */
+    .gallery img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      user-select: none;
+      transition: transform 0.4s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(255, 204, 0, 0.7);
+    }
+
+    /* İletişim Formu */
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      font-size: 1rem;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1.8px solid #ddd;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      outline: none;
+      border-color: gold;
+      box-shadow: 0 0 12px #ffcc004d;
+    }
+    .contact-form button {
+      background-color: gold;
+      border: none;
+      padding: 16px 0;
+      font-weight: 700;
+      color: #111;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.15rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 6px 14px rgba(255, 204, 0, 0.6);
+      user-select: none;
+    }
+    .contact-form button:hover,
+    .contact-form button:focus {
+      background-color: #ffcc00;
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    .video {
+      width: 500px;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Sosyal Medya Bölümü */
+    .social-links {
+      background-color: #111;
+      color: #fff;
+      padding: 70px 20px 90px;
+      text-align: center;
+      user-select: none;
+      border-radius: 20px;
+    }
+    .social-links h2 {
+      color: gold;
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 32px;
+    }
+    .social-links a {
+      color: gold;
+      font-size: 22px;
+      margin: 0 18px;
+      transition: color 0.3s ease;
+      user-select: none;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .social-links a:hover,
+    .social-links a:focus {
+      color: #fff;
+      outline: none;
+    }
+
+
+    /* Harita iframe */
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+      user-select: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #111;
+      color: #eee;
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 22px 16px;
+      user-select: none;
+      letter-spacing: 0.05em;
+    }
+
+
+
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    .dark-mode nav {
+      background-color: #222;
+      box-shadow: 0 2px 8px rgba(255, 204, 0, 0.25);
+    }
+    .dark-mode nav a.logo,
+    .dark-mode nav ul li a {
+      color: #ffdb4d;
+    }
+    .dark-mode nav ul li a:hover,
+    .dark-mode nav ul li a:focus {
+      background-color: #ffdb4d;
+      color: #111;
+    }
+    .dark-mode .hero-content {
+      background-color: rgba(10, 10, 10, 0.85);
+      box-shadow: 0 0 30px #ffdb4dbb;
+    }
+    .dark-mode .info-box {
+      background-color: #2e2e2e;
+      border-left-color: #ffdb4d;
+      color: #ddd;
+      box-shadow: none;
+    }
+    .dark-mode .card {
+      background-color: #1f1f1f;
+      box-shadow: 0 4px 20px rgba(255, 204, 0, 0.2);
+      color: #eee;
+    }
+    .dark-mode .card:hover {
+      box-shadow: 0 10px 35px rgba(255, 204, 0, 0.8);
+    }
+    .dark-mode .contact-form input,
+    .dark-mode .contact-form textarea,
+    .dark-mode .contact-form select {
+      background-color: #2b2b2b;
+      border-color: #555;
+      color: #ddd;
+    }
+    .dark-mode .contact-form input:focus,
+    .dark-mode .contact-form textarea:focus,
+    .dark-mode .contact-form select:focus {
+      border-color: #ffdb4d;
+      box-shadow: 0 0 12px #ffdb4dbb;
+      background-color: #3b3b3b;
+    }
+    .dark-mode .contact-form button {
+      background-color: #ffdb4d;
+      color: #111;
+      box-shadow: 0 6px 16px #ffdb4daa;
+    }
+    .dark-mode .contact-form button:hover,
+    .dark-mode .contact-form button:focus {
+      background-color: #e6c800;
+      transform: scale(1.07);
+      box-shadow: 0 8px 22px #e6c800bb;
+      outline: none;
+    }
+    .dark-mode .social-links {
+      background-color: #222;
+      color: #ffdb4d;
+    }
+    .dark-mode .social-links a {
+      color: #ffdb4d;
+    }
+    .dark-mode .social-links a:hover,
+    .dark-mode .social-links a:focus {
+      color: #fff;
+    }
+    .dark-mode footer {
+      background-color: #222;
+      color: #ccc;
+    }
+    .dark-mode iframe {
+      box-shadow: 0 0 24px rgba(255, 204, 0, 0.35);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .hero-content {
+        padding: 36px 24px;
+        max-width: 90vw;
+      }
+      section {
+        margin: 70px auto;
+      }
+      nav ul {
+        gap: 16px;
+      }
+    }
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      .hero p,
+      #countdown {
+        font-size: 1rem;
+      }
+      .schedule,
+      .artists,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<button
+  aria-label="Gece modu aç/kapat"
+  onclick="toggleDarkMode()"
+  style="
+    position: fixed;
+    bottom: 90px;   /* WhatsApp butonunun üstünde */
+    right: 28px;
+    padding: 14px 18px;
+    border-radius: 50%;
+    border: none;
+    background: gold;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 1100;
+    user-select: none;
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.7);
+    font-size: 24px;
+    transition: background-color 0.3s ease;
+  "
+  onmouseenter="this.style.backgroundColor='#ffcc00'"
+  onmouseleave="this.style.backgroundColor='gold'"
+>
+  🌙
+</button>
+
+
+  <nav role="navigation" aria-label="Ana menü">
+    <a class="logo" href="b copy.html" tabindex="0">GoldFest</a>
+    <ul>
+      <li><a href="#" tabindex="0">Anasayfa</a></li>
+      <li><a href="#schedule" tabindex="0">Festivaller</a></li>
+      <li><a href="#contact" tabindex="0">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <section class="intro-section" aria-label="GoldFest tanıtım bölümü">
+  <div class="intro-content">
+    <div class="intro-text">
+      <h1>GoldFest 2025'e Hazır Mısınız?</h1>
+      <h2>Türkiye'nin en büyük tesettür giyim, moda ve alışveriş festivali.</h2>
+    </div>
+    <div>
+      <img src="armine-2.png" alt="GoldFest">
+    </div>
+  </div>
+</section>
+
+  <section class="about" aria-label="Festival hakkında bilgiler">
+    <h2>Festival Hakkında</h2>
+    <div class="info-box">
+      <p><strong>Tarih:</strong> 5 - 9 Ağustos 2025</p>
+      <p><strong>Yer:</strong> Grand Asya Hotel, Bandırma</p>
+      <p><strong>Saat:</strong> 11:00 - 23:00</p>
+      <p><strong>İlk gelen 250 kişiye 250 TL hediye çeki!</strong></p>
+    </div>
+    <h1>Bandırma Moda & Alışveriş Festivali</h1>
+    <img src="yazılı-görsel.png" alt="#">
+    <p style="max-width:700px; margin: auto; user-select:text; font-weight:500;">  
+    </p>
+  </section>
+<div>
+  <div class="video">
+    <iframe src="https://youtu.be/rVVofENfdlA?list=PLGEZTVGlJnIJwadqxFWVSKZeIoedpgioH" frameborder="0"></iframe>
+    </div>
+</div>
+ 
+
+
+
+  <h1 class="nedenmi">Neden mi? GoldFest</h1>
+  <p class="nedenmi-text">
+    <strong>GoldFest</strong>, tesettür giyim alanında özgün stil arayışında olan 
+    hanımlar için benzersiz bir buluşma noktasıdır. Türkiye’nin dört 
+    bir yanından gelen seçkin firmaların katılımıyla düzenlenen 
+    bu özel etkinlikte, en yeni sezon koleksiyonları ve özgün tasarımlar 
+    bir araya gelir. Moda tutkunları için hem ilham verici hem de alışveriş
+     açısından zengin bir deneyim sunan GoldFest, tesettür modasına yön veren 
+     markaları ve stil sahibi kadınları aynı çatı altında buluşturur. Çeşitliliğin, 
+     şıklığın ve zarafetin ön planda olduğu bu organizasyon,
+    her yıl heyecanla beklenen bir moda şölenine dönüşmektedir.
+  </p>
+
+  <section id="schedule" aria-label="Festival programı">
+    <h2>Festivaller</h2>
+    <div class="schedule">
+      <article class="card" tabindex="0" aria-label="5-9 Ağustos programı">
+        <h3>5-9 Ağustos</h3>
+        <p><h4>BANDIRMA</h4></p>
+        <p><h4>GRAND ASYA HOTEL</h4></p>
+        <p><h4>11.00-23.00</h4></p>
+        <div id="countdown" aria-live="polite" aria-atomic="true">Yükleniyor...</div>
+      </article>
+      <article class="card" tabindex="0" aria-label="13-17 Ağustos programı">
+        <h3>13-17 Ağustos</h3>
+        <p><h4>AFYON/MERKEZ</h4></p>
+        <p><h4>MCG MARBLE OTEL</h4></p>
+        <p><h4>11.00-23.00</h4></p>
+        <div id="countdown" aria-live="polite" aria-atomic="true">Yükleniyor...</div>
+      </article>
+      <article class="card" tabindex="0" aria-label="9 Ağustos özel etkinlikler">
+        <h3>27-31 Ağustos</h3>
+        <p><h4>KONYA</h4></p>
+        <p><h4>Ünlü Tasarımcı Sunumu</h4></p>
+        <p><h4>11.00-23.00</h4></p>
+        <div id="countdown" aria-live="polite" aria-atomic="true">Yükleniyor...</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="map" aria-label="Festival alanı haritası">
+    <h2>Festival Alanı</h2>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.799348502289!2d27.981293!3d40.353603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b0aaea814a1c85%3A0x511b67b1e0fc125a!2sGrand%20Asya%20Hotel!5e0!3m2!1str!2str!4v1625660000000"
+      allowfullscreen=""
+      loading="lazy"
+      title="Grand Asya Hotel konum haritası"
+    ></iframe>
+  </section>
+
+  <section class="social-links" aria-label="Sosyal medya bağlantıları">
+    <h2>Bizi Takip Et</h2>
+    <div>
+      <a href="https://www.instagram.com/goldfestivall?igsh=YjRkbmh6N2VhM3Yy&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram GoldFest">
+        <i class="fab fa-instagram"></i>
+        <p>Instagram</p>
+      </a>
+      <a href="https://www.tiktok.com/@goldfestivall" target="_blank" rel="noopener" aria-label="TikTok GoldFestivall">
+        <i class="fab fa-tiktok"></i>
+        <p>TikTok</p>
+      </a>
+      <a href="https://www.facebook.com/share/19ZhcXVfxn/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook GoldFestivall">
+        <i class="fab fa-facebook"></i>
+        <p>Facebook</p>
+      </a>
+      <a href="https://www.youtube.com/@goldfestivall" target="_blank" rel="noopener" aria-label="YouTube GoldFestivall">
+        <i class="fab fa-youtube"></i>
+        <p>YouTube</p>
+      </a>
+    </div>
+  </section>
+
+  <section id="contact" aria-label="İletişim formu">
+    <h2>İletişim</h2>
+    <form class="contact-form" action="contact.php" method="POST" novalidate>
+      <input
+        type="text"
+        name="name"
+        placeholder="Adınız Soyadınız"
+        required
+        aria-required="true"
+        aria-label="Adınız Soyadınız"
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="E-posta"
+        required
+        aria-required="true"
+        aria-label="E-posta adresiniz"
+      />
+      <textarea
+        name="message"
+        rows="5"
+        placeholder="Mesajınız"
+        required
+        aria-required="true"
+        aria-label="Mesajınız"
+      ></textarea>
+      <button type="submit" aria-label="Mesaj gönder">Gönder</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 GoldFest. Tüm hakları saklıdır.</p>
+    <p>E-Mail goldfestivaltr@gmail.com</p> 
+  </footer>
+
+ 
+
+  <script>
+    // Sayaç
+    const countdown = document.getElementById("countdown");
+    const eventDate = new Date("2025-08-05T11:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        countdown.innerText = "Festival Başladı!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdown.innerText = `${days}g ${hours}s ${minutes}d ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Gece modu butonu
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      // Tercihi localstorage'da sakla
+      if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+      } else {
+        localStorage.removeItem("darkMode");
+      }
+    }
+
+    // Sayfa yüklendiğinde tercih uygulanır
+    window.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+      }
+    });
+  </script>
+</body>
+</html>
